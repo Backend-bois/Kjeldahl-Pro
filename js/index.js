@@ -19,17 +19,25 @@ $('#calcularBtn').on('click', function() {
     let volBase = $('#volBaseInput');
     let concTeoricaBase = $('#concTeocricaBaseInput');
     let concRealBase = $('#concRealBaseInput');
-
-    if (validaNumero(volAmostra) &&
-        validaNumero(volDest) &&
-        validaNumero(acidConc) &&
-        validaNumero(fatorPadrao) &&
-        validaNumero(volBase) &&
-        validaNumero(concTeoricaBase) &&
-        validaNumero(concRealBase)) {
-            
-            calcular();
-        }
+    let count = 0;
+    if (validaNumero(volAmostra))
+        count++;
+    if (validaNumero(volDest))
+        count++;
+    if (validaNumero(acidConc))
+        count++;
+    if (validaNumero(fatorPadrao))
+        count++;
+    if (validaNumero(volBase))
+        count++;
+    if (validaNumero(concTeoricaBase))
+        count++;
+    if (validaNumero(concRealBase))
+        count++;
+    
+    if (count == 0)
+        calcular();
+        
 });
 
 $('input').on('focus', function() {

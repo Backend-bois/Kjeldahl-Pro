@@ -12,9 +12,9 @@ function calcular() {
 }
 
 $('#calcularBtn').on('click', function() {
-    let volAmostra = $('#volAmostraInput');
-    let volDest = $('#destVolInput');
-    let acidConc = $('#acidConcDestInput');
+    let volAmostra = $('#pesoAmostraInput');
+    let volDest = $('#acidoVolInput');
+    let acidConc = $('#acidoConcDestInput');
     let fatorPadrao = $('#fatorPadronizacaoInput');
     let volBase = $('#volBaseInput');
     let concTeoricaBase = $('#concTeocricaBaseInput');
@@ -43,3 +43,56 @@ $('#calcularBtn').on('click', function() {
 $('input').on('focus', function() {
     $(this).removeClass('is-invalid')
 });
+
+$('#valorConversaoSelect').on('change', function() {
+    $('#fatorConversaoDemo').text($(this).val().replace('.', ','));
+})
+
+$('#pesoAmostraInput').on('input', function() {
+    if ($(this).val() != '')
+        $('#pesoAmostraDemo').text($(this).val() + 'g');
+    else
+        $('#pesoAmostraDemo').text('P');
+});
+
+$('#acidoVolInput').on('input', function() {
+    if ($(this).val() != '')
+        $('#acidoVolDemo').text($(this).val() + 'ml');
+    else
+        $('#acidoVolDemo').text('Va');
+});
+
+$('#acidoConcDestInput').on('input', function() {
+    if ($(this).val() != '')
+        $('#acidoConcDemo').text($(this).val());
+    else
+        $('#acidoConcDemo').text('Na');
+});
+
+$('#fatorPadronizacaoInput').on('input', function() {
+    if ($(this).val() != '')
+        $('#fatorPadronizacaoDemo').text($(this).val());
+    else
+        $('#fatorPadronizacaoDemo').text('fa');
+});
+
+$('#volBaseInput').on('input', function() {
+    if ($(this).val() != '')
+        $('#volBaseDemo').text($(this).val() + 'ml');
+    else
+        $('#volBaseDemo').text('Vb');
+})
+
+$('#concTeocricaBaseInput').on('input', function() {
+    if ($(this).val() != '')
+        $('#concTeoricaBaseDemo').text($(this).val());
+    else
+        $('#concTeoricaBaseDemo').text('Nb');
+})
+
+$('#concRealBaseInput').on('input', function() {
+    if ($(this).val() != '')
+        $('#concRealBaseDemo').text($(this).val());
+    else
+        $('#concRealBaseDemo').text('fb');
+})

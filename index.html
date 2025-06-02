@@ -16,73 +16,87 @@
         </header>
         <main class="container d-flex justify-content-center">
             <div class="mainContainer col-lg-8">
-                <div id="titleContainer" class="d-flex justify-content-center mt-5 mb-4">
-                    <h1>Fórmula de Kjeldahl</h1>
-                </div>
-                <div class="inputContainer">
-                    <select id="valorConversaoSelect" class="form-select">
-                        <option value="6.25">Valor Padrão (6,25)</option>
-                        <option value="6.38">Leite e derivados (6,38)</option>
-                        <option value="5.95">Arroz (5,95)</option>
-                        <option value="5.83">Farinha de centeio (5,83)</option>
-                        <option value="5.83">Farinha de trigo (5,83)</option>
-                        <option value="5.83">Cevada (5,83)</option>
-                        <option value="5.83">Aveia (5,83)</option>
-                        <option value="5.7">Macarrão (5,70)</option>
-                        <option value="5.55">Gelatina (5,55)</option>
-                        <option value="5.46">Amendoim (5,46)</option>
-                        <option value="5.46">Castanha do Pará (5,46)</option>
-                        <option value="5.3">Avelã (5,30)</option>
-                        <option value="5.3">Coco (5,30)</option>
-                        <option value="5.3">Outras Nozes (5,30)</option>
-                        <option value="5.18">Amêndoas (5,18)</option>
-                    </select>
-                </div>
-                <div class="row mt-md-4">
-                    <div class="inputContainer d-flex flex-column col-md-6 col-12 mt-2">
-                        <label for="volAmostraInput">Volume da Amostra:</label>
-                        <input type="number" id="volAmostraInput" min="0" step="0.1" class="form-control">
-                        <div class="invalid-feedback">Valor deve ser preenchido e positivo</div>
+                <section id="formSection">
+                    <div id="titleContainer" class="d-flex justify-content-center mt-5 mb-4">
+                        <h1>Fórmula de Kjeldahl</h1>
                     </div>
-                    <div class="inputContainer d-flex flex-column col-md-6 col-12 mt-2">
-                        <label for="destVolInput">Volume de destilação:</label>
-                        <input type="number" id="destVolInput" min="0" step="0.1" class="form-control">
-                        <div class="invalid-feedback">Valor deve ser preenchido e positivo</div>
+                    <div class="inputContainer">
+                        <select id="valorConversaoSelect" class="form-select">
+                            <option value="6.25">Valor Padrão (6,25)</option>
+                            <option value="6.38">Leite e derivados (6,38)</option>
+                            <option value="5.95">Arroz (5,95)</option>
+                            <option value="5.83">Farinha de centeio (5,83)</option>
+                            <option value="5.83">Farinha de trigo (5,83)</option>
+                            <option value="5.83">Cevada (5,83)</option>
+                            <option value="5.83">Aveia (5,83)</option>
+                            <option value="5.7">Macarrão (5,70)</option>
+                            <option value="5.55">Gelatina (5,55)</option>
+                            <option value="5.46">Amendoim (5,46)</option>
+                            <option value="5.46">Castanha do Pará (5,46)</option>
+                            <option value="5.3">Avelã (5,30)</option>
+                            <option value="5.3">Coco (5,30)</option>
+                            <option value="5.3">Outras Nozes (5,30)</option>
+                            <option value="5.18">Amêndoas (5,18)</option>
+                        </select>
                     </div>
-                </div>
-                <div class="row mt-md-4">
-                    <div class="inputContainer d-flex flex-column col-md-6 col-12 mt-2">
-                        <label for="acidConcDestInput">Concentração do ácido:</label>
-                        <input type="number" id="acidConcDestInput" min="0" step="0.1" class="form-control">
-                        <div class="invalid-feedback">Valor deve ser preenchido e positivo</div>
+                    <div class="row mt-md-4">
+                        <div class="inputContainer d-flex flex-column col-md-6 col-12 mt-2">
+                            <label for="pesoAmostraInput">Peso da Amostra (g):</label>
+                            <input type="number" id="pesoAmostraInput" min="0" step="0.1" class="form-control">
+                            <div class="invalid-feedback">Valor deve ser preenchido e positivo</div>
+                        </div>
+                        <div class="inputContainer d-flex flex-column col-md-6 col-12 mt-2">
+                            <label for="acidoVolInput">Volume de destilação (ml):</label>
+                            <input type="number" id="acidoVolInput" min="0" step="0.1" class="form-control">
+                            <div class="invalid-feedback">Valor deve ser preenchido e positivo</div>
+                        </div>
                     </div>
-                    <div class="inputContainer d-flex flex-column col-md-6 col-12 mt-2">
-                        <label for="fatorPadronizacaoInput">Fator de padronização:</label>
-                        <input type="number" id="fatorPadronizacaoInput" min="0" step="0.1" class="form-control">
-                        <div class="invalid-feedback">Valor deve ser preenchido e positivo</div>
+                    <div class="row mt-md-4">
+                        <div class="inputContainer d-flex flex-column col-md-6 col-12 mt-2">
+                            <label for="acidoConcDestInput">Concentração do ácido:</label>
+                            <input type="number" id="acidoConcDestInput" min="0" step="0.1" class="form-control">
+                            <div class="invalid-feedback">Valor deve ser preenchido e positivo</div>
+                        </div>
+                        <div class="inputContainer d-flex flex-column col-md-6 col-12 mt-2">
+                            <label for="fatorPadronizacaoInput">Fator de padronização:</label>
+                            <input type="number" id="fatorPadronizacaoInput" min="0" step="0.1" class="form-control">
+                            <div class="invalid-feedback">Valor deve ser preenchido e positivo</div>
+                        </div>
                     </div>
-                </div>
-                <div class="row mt-md-4">
-                    <div class="inputContainer d-flex flex-column col-md-6 col-12 mt-2">
-                        <label for="volBaseInput">Volume da base:</label>
-                        <input type="number" id="volBaseInput" min="0" step="0.1" class="form-control">
-                        <div class="invalid-feedback">Valor deve ser preenchido e positivo</div>
+                    <div class="row mt-md-4">
+                        <div class="inputContainer d-flex flex-column col-md-6 col-12 mt-2">
+                            <label for="volBaseInput">Volume da base (ml):</label>
+                            <input type="number" id="volBaseInput" min="0" step="0.1" class="form-control">
+                            <div class="invalid-feedback">Valor deve ser preenchido e positivo</div>
+                        </div>
+                        <div class="inputContainer d-flex flex-column col-md-6 col-12 mt-2">
+                            <label for="concTeocricaBaseInput">Concentração teórica da base:</label>
+                            <input type="number" id="concTeocricaBaseInput" min="0" step="0.1" class="form-control">
+                            <div class="invalid-feedback">Valor deve ser preenchido e positivo</div>
+                        </div>
                     </div>
-                    <div class="inputContainer d-flex flex-column col-md-6 col-12 mt-2">
-                        <label for="concTeocricaBaseInput">Concentração teórica da base:</label>
-                        <input type="number" id="concTeocricaBaseInput" min="0" step="0.1" class="form-control">
-                        <div class="invalid-feedback">Valor deve ser preenchido e positivo</div>
+                    <div class="row mt-md-4">
+                        <div class="inputContainer d-flex flex-column col-md-6 col-12 mt-2">
+                            <label for="concRealBaseInput">Concentração real da base:</label>
+                            <input type="number" id="concRealBaseInput" min="0" step="0.1" class="form-control">
+                            <div class="invalid-feedback">Valor deve ser preenchido e positivo</div>
+                        </div>
                     </div>
-                </div>
-                <div class="row mt-md-4">
-                    <div class="inputContainer d-flex flex-column col-md-6 col-12 mt-2">
-                        <label for="concRealBaseInput">Concentração real da base:</label>
-                        <input type="number" id="concRealBaseInput" min="0" step="0.1" class="form-control">
-                        <div class="invalid-feedback">Valor deve ser preenchido e positivo</div>
+                    
+                    <button class="btn btn-primary mt-4" id="calcularBtn">Calcular</button>
+                </section>
+                <aside id="demonstracaoContainer" class="d-flex justify-content-center mt-5 mb-4">
+                    <div id="demonstracao" class="d-flex flex-column justify-content-center">
+                        <div id="dividendo" class="d-flex flex-wrap justify-content-center">
+                            <div>(<span id="acidoVolDemo">Va</span> X <span id="acidoConcDemo">Na</span> X <span id="fatorPadronizacaoDemo">fa</span>)H2SO4&nbsp;</div>
+                            <div>- (<span id="volBaseDemo">Vb</span> x <span id="concTeoricaBaseDemo">Nb</span> x <span id="concRealBaseDemo">fb</span>)NaOH x 1,4 x <span id="fatorConversaoDemo">6,25</span></div>
+                        </div>
+                        <div id="divisor" class="d-flex justify-content-center">
+                            <span id="pesoAmostraDemo">P</span>
+                        </div>
                     </div>
-                </div>
+                </aside>
                 
-                <button class="btn btn-primary mt-4" id="calcularBtn">Calcular</button>
             </div>
         </main>
     </body>

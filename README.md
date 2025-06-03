@@ -39,7 +39,7 @@ Software desenvolvido para calcular o **teor de proteína em amostras alimentíc
 
 > Nenhuma instalação adicional é necessária. O sistema roda diretamente no navegador.
 
-## 📸 Exemplo de Saída
+## 📸 Interface (Desktop e Mobile)
 
-> ![image](https://github.com/user-attachments/assets/exemplo-grafico-kjeldahl.png)  
-> *Figura: Comparativo entre níveis de nitrogênio e proteína obtida*
+> ![![image](https://github.com/user-attachments/assets/f16008fa-53af-4846-85a1-963f4a5b8556)](https://github.com/user-attachments/assets/exemplo-grafico-kjeldahl.png)
+> ![![image](![image](https://github.com/user-attachments/assets/c8f63aa1-97db-47bc-8bdb-940c8b4b14ff))](https://github.com/user-attachments/assets/exemplo-grafico-kjeldahl.png)

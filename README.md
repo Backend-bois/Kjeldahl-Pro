@@ -41,5 +41,5 @@ Software desenvolvido para calcular o **teor de proteína em amostras alimentíc
 
 ## 📸 Interface (Desktop e Mobile)
 
-> (https://github.com/user-attachments/assets/f16008fa-53af-4846-85a1-963f4a5b8556)].
-> (https://github.com/user-attachments/assets/c8f63aa1-97db-47bc-8bdb-940c8b4b14ff)].
+> ![![image](https://github.com/user-attachments/assets/f16008fa-53af-4846-85a1-963f4a5b8556)].
+> ![![image](https://github.com/user-attachments/assets/c8f63aa1-97db-47bc-8bdb-940c8b4b14ff)].

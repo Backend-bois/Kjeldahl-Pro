@@ -11,8 +11,6 @@ Software desenvolvido para calcular o **teor de proteína em amostras alimentíc
  └── Imagens e arquivos estáticos utilizados pelo site
 📂 css/
  └── Estilos (arquivos .css)
-📂 data/
- └── Arquivos de dados utilizados nos cálculos
 📂 js/
  └── Scripts JavaScript com a lógica do sistema
 📄 index.html

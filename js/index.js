@@ -1,41 +1,51 @@
 function validaNumero(obj) {
-    if (!(obj.val() != '' && obj.val() != 0 && parseFloat(obj.val()) > 0)) {
+    if (!(obj.val() != '' && parseFloat(obj.val()) > 0)) {
         obj.addClass('is-invalid');
-        return false;
+        return true;
     }
 
-    return true;
+    return false;
 }
 
 function calcular() {
-    console.log('deu'); //Ainda falta desenvolver o cálculo
+    let pesoAmostra = $('#pesoAmostraInput').val();
+    let volAcido = $('#acidoVolInput').val();
+    let concAcido = $('#acidoConcInput').val();
+    let fatorCorrecaoAcido = $('#fatorCorrecaoAcidoInput').val();
+    let volBase = $('#volBaseInput').val();
+    let concBase = $('#concBaseInput').val();
+    let fatorCorrecaoBase = $('#fatorCorrecaoBaseInput').val();
+    let fcn = $('#valorConversaoSelect').val();
+
+    let result = (((volAcido * concAcido * fatorCorrecaoAcido) - (volBase * concBase * fatorCorrecaoBase))/pesoAmostra) * fcn * 1.4;
+    $('#resultado').text(result);
 }
 
 $('#calcularBtn').on('click', function() {
-    let volAmostra = $('#pesoAmostraInput');
-    let volDest = $('#acidoVolInput');
-    let acidConc = $('#acidoConcDestInput');
-    let fatorPadrao = $('#fatorPadronizacaoInput');
+    let pesoAmostra = $('#pesoAmostraInput');
+    let volAcido = $('#acidoVolInput');
+    let concAcido = $('#acidoConcInput');
+    let fatorCorrecaoAcido = $('#fatorCorrecaoAcidoInput');
     let volBase = $('#volBaseInput');
-    let concTeoricaBase = $('#concTeocricaBaseInput');
-    let concRealBase = $('#concRealBaseInput');
+    let concBase = $('#concBaseInput');
+    let fatorCorrecaoBase = $('#fatorCorrecaoBaseInput');
     let count = 0;
-    if (validaNumero(volAmostra))
+    if (validaNumero(pesoAmostra))
         count++;
-    if (validaNumero(volDest))
+    if (validaNumero(volAcido))
         count++;
-    if (validaNumero(acidConc))
+    if (validaNumero(concAcido))
         count++;
-    if (validaNumero(fatorPadrao))
+    if (validaNumero(fatorCorrecaoAcido))
         count++;
     if (validaNumero(volBase))
         count++;
-    if (validaNumero(concTeoricaBase))
+    if (validaNumero(concBase))
         count++;
-    if (validaNumero(concRealBase))
+    if (validaNumero(fatorCorrecaoBase))
         count++;
     
-    if (count == 0)
+    if (count == 0) 
         calcular();
         
 });
@@ -62,14 +72,14 @@ $('#acidoVolInput').on('input', function() {
         $('#acidoVolDemo').text('Va');
 });
 
-$('#acidoConcDestInput').on('input', function() {
+$('#acidoConcInput').on('input', function() {
     if ($(this).val() != '')
         $('#acidoConcDemo').text($(this).val());
     else
         $('#acidoConcDemo').text('Na');
 });
 
-$('#fatorPadronizacaoInput').on('input', function() {
+$('#fatorCorrecaoAcidoInput').on('input', function() {
     if ($(this).val() != '')
         $('#fatorPadronizacaoDemo').text($(this).val());
     else
@@ -83,14 +93,14 @@ $('#volBaseInput').on('input', function() {
         $('#volBaseDemo').text('Vb');
 })
 
-$('#concTeocricaBaseInput').on('input', function() {
+$('#concBaseInput').on('input', function() {
     if ($(this).val() != '')
         $('#concTeoricaBaseDemo').text($(this).val());
     else
         $('#concTeoricaBaseDemo').text('Nb');
 })
 
-$('#concRealBaseInput').on('input', function() {
+$('#fatorCorrecaoBaseInput').on('input', function() {
     if ($(this).val() != '')
         $('#concRealBaseDemo').text($(this).val());
     else

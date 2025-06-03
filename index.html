@@ -14,13 +14,14 @@
                 <img src="assets/brand.png" alt="Logo Fatec" class="brand w-100 mt-2 mb-2">
             </div>
         </header>
-        <main class="container d-flex justify-content-center">
+        <main class="container d-flex flex-column align-items-center">
             <div class="mainContainer col-lg-8">
                 <section id="formSection">
                     <div id="titleContainer" class="d-flex justify-content-center mt-5 mb-4">
                         <h1>Fórmula de Kjeldahl</h1>
                     </div>
                     <div class="inputContainer">
+                        <label for="valorConversaoSelect">Conversão de Nitrogênio para proteína</label>
                         <select id="valorConversaoSelect" class="form-select">
                             <option value="6.25">Valor Padrão (6,25)</option>
                             <option value="6.38">Leite e derivados (6,38)</option>
@@ -46,20 +47,20 @@
                             <div class="invalid-feedback">Valor deve ser preenchido e positivo</div>
                         </div>
                         <div class="inputContainer d-flex flex-column col-md-6 col-12 mt-2">
-                            <label for="acidoVolInput">Volume de destilação (ml):</label>
+                            <label for="acidoVolInput">Volume de ácido (ml):</label>
                             <input type="number" id="acidoVolInput" min="0" step="0.1" class="form-control">
                             <div class="invalid-feedback">Valor deve ser preenchido e positivo</div>
                         </div>
                     </div>
                     <div class="row mt-md-4">
                         <div class="inputContainer d-flex flex-column col-md-6 col-12 mt-2">
-                            <label for="acidoConcDestInput">Concentração do ácido:</label>
-                            <input type="number" id="acidoConcDestInput" min="0" step="0.1" class="form-control">
+                            <label for="acidoConcInput">Concentração do ácido:</label>
+                            <input type="number" id="acidoConcInput" min="0" step="0.1" class="form-control">
                             <div class="invalid-feedback">Valor deve ser preenchido e positivo</div>
                         </div>
                         <div class="inputContainer d-flex flex-column col-md-6 col-12 mt-2">
-                            <label for="fatorPadronizacaoInput">Fator de padronização:</label>
-                            <input type="number" id="fatorPadronizacaoInput" min="0" step="0.1" class="form-control">
+                            <label for="fatorCorrecaoAcidoInput">Fator de correção do ácido:</label>
+                            <input type="number" id="fatorCorrecaoAcidoInput" min="0" step="0.1" class="form-control">
                             <div class="invalid-feedback">Valor deve ser preenchido e positivo</div>
                         </div>
                     </div>
@@ -70,34 +71,36 @@
                             <div class="invalid-feedback">Valor deve ser preenchido e positivo</div>
                         </div>
                         <div class="inputContainer d-flex flex-column col-md-6 col-12 mt-2">
-                            <label for="concTeocricaBaseInput">Concentração teórica da base:</label>
-                            <input type="number" id="concTeocricaBaseInput" min="0" step="0.1" class="form-control">
+                            <label for="concBaseInput">Concentração da base:</label>
+                            <input type="number" id="concBaseInput" min="0" step="0.1" class="form-control">
                             <div class="invalid-feedback">Valor deve ser preenchido e positivo</div>
                         </div>
                     </div>
                     <div class="row mt-md-4">
                         <div class="inputContainer d-flex flex-column col-md-6 col-12 mt-2">
-                            <label for="concRealBaseInput">Concentração real da base:</label>
-                            <input type="number" id="concRealBaseInput" min="0" step="0.1" class="form-control">
+                            <label for="fatorCorrecaoBaseInput">Fator de correção da base:</label>
+                            <input type="number" id="fatorCorrecaoBaseInput" min="0" step="0.1" class="form-control">
                             <div class="invalid-feedback">Valor deve ser preenchido e positivo</div>
                         </div>
                     </div>
                     
                     <button class="btn btn-primary mt-4" id="calcularBtn">Calcular</button>
                 </section>
-                <aside id="demonstracaoContainer" class="d-flex justify-content-center mt-5 mb-4">
-                    <div id="demonstracao" class="d-flex flex-column justify-content-center">
-                        <div id="dividendo" class="d-flex flex-wrap justify-content-center">
-                            <div>(<span id="acidoVolDemo">Va</span> X <span id="acidoConcDemo">Na</span> X <span id="fatorPadronizacaoDemo">fa</span>)H2SO4&nbsp;</div>
-                            <div>- (<span id="volBaseDemo">Vb</span> x <span id="concTeoricaBaseDemo">Nb</span> x <span id="concRealBaseDemo">fb</span>)NaOH x 1,4 x <span id="fatorConversaoDemo">6,25</span></div>
-                        </div>
-                        <div id="divisor" class="d-flex justify-content-center">
-                            <span id="pesoAmostraDemo">P</span>
-                        </div>
-                    </div>
-                </aside>
                 
             </div>
+            <aside id="demonstracaoContainer" class="d-flex justify-content-center mt-5 mb-4">
+                <div id="demonstracao" class="d-flex flex-column justify-content-center">
+                    <div id="dividendo" class="d-flex flex-wrap justify-content-center">
+                        <div>(<span id="acidoVolDemo">Va</span> X <span id="acidoConcDemo">Na</span> X <span id="fatorPadronizacaoDemo">fa</span>)H2SO4&nbsp;</div>
+                        <div>- (<span id="volBaseDemo">Vb</span> x <span id="concTeoricaBaseDemo">Nb</span> x <span id="concRealBaseDemo">fb</span>)NaOH x 1,4 x <span id="fatorConversaoDemo">6,25</span></div>
+                    </div>
+                    <div id="divisor" class="d-flex justify-content-center">
+                        <span id="pesoAmostraDemo">P</span>
+                    </div>
+                </div>
+            </aside>
+                
+            <span id="resultado"></span>
         </main>
     </body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>

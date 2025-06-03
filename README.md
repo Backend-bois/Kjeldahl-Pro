@@ -11,8 +11,6 @@ Software desenvolvido para calcular o **teor de proteína em amostras alimentíc
  └── Imagens e arquivos estáticos utilizados pelo site
 📂 css/
  └── Estilos (arquivos .css)
-📂 data/
- └── Arquivos de dados utilizados nos cálculos
 📂 js/
  └── Scripts JavaScript com a lógica do sistema
 📄 index.html
@@ -39,7 +37,11 @@ Software desenvolvido para calcular o **teor de proteína em amostras alimentíc
 
 > Nenhuma instalação adicional é necessária. O sistema roda diretamente no navegador.
 
-## 📸 Exemplo de Saída
+## 📸 Interface
 
-> ![image](https://github.com/user-attachments/assets/exemplo-grafico-kjeldahl.png)  
-> *Figura: Comparativo entre níveis de nitrogênio e proteína obtida*
+  # 💻 Desktop 
+> ![![image](https://github.com/user-attachments/assets/f16008fa-53af-4846-85a1-963f4a5b8556)].
+> # 📱 Mobile
+> ![![image](https://github.com/user-attachments/assets/c8f63aa1-97db-47bc-8bdb-940c8b4b14ff)].
+>
+> Fique a vontade para abrir pull requests caso encontre algo a melhorar no Software, aproveite! 🚀

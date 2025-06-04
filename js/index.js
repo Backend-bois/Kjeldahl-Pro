@@ -18,7 +18,10 @@ function calcular() {
     let fcn = $('#valorConversaoSelect').val();
 
     let result = (((volAcido * concAcido * fatorCorrecaoAcido) - (volBase * concBase * fatorCorrecaoBase))/pesoAmostra) * fcn * 1.4;
-    $('#resultado').text(result);
+    $('#resultado').text(result.toFixed(4));
+    $('#resultado').show();
+    $('#resultado')[0].scrollIntoView();
+
 }
 
 $('#calcularBtn').on('click', function() {
@@ -56,6 +59,8 @@ $('input').on('focus', function() {
 
 $('#valorConversaoSelect').on('change', function() {
     $('#fatorConversaoDemo').text($(this).val().replace('.', ','));
+
+    $('#resultado').hide();
 })
 
 $('#pesoAmostraInput').on('input', function() {
@@ -63,6 +68,8 @@ $('#pesoAmostraInput').on('input', function() {
         $('#pesoAmostraDemo').text($(this).val() + 'g');
     else
         $('#pesoAmostraDemo').text('P');
+
+    $('#resultado').hide();
 });
 
 $('#acidoVolInput').on('input', function() {
@@ -70,6 +77,8 @@ $('#acidoVolInput').on('input', function() {
         $('#acidoVolDemo').text($(this).val() + 'ml');
     else
         $('#acidoVolDemo').text('Va');
+
+    $('#resultado').hide();
 });
 
 $('#acidoConcInput').on('input', function() {
@@ -77,6 +86,8 @@ $('#acidoConcInput').on('input', function() {
         $('#acidoConcDemo').text($(this).val());
     else
         $('#acidoConcDemo').text('Na');
+
+    $('#resultado').hide();
 });
 
 $('#fatorCorrecaoAcidoInput').on('input', function() {
@@ -84,6 +95,8 @@ $('#fatorCorrecaoAcidoInput').on('input', function() {
         $('#fatorPadronizacaoDemo').text($(this).val());
     else
         $('#fatorPadronizacaoDemo').text('fa');
+
+    $('#resultado').hide();
 });
 
 $('#volBaseInput').on('input', function() {
@@ -91,6 +104,8 @@ $('#volBaseInput').on('input', function() {
         $('#volBaseDemo').text($(this).val() + 'ml');
     else
         $('#volBaseDemo').text('Vb');
+
+    $('#resultado').hide();
 })
 
 $('#concBaseInput').on('input', function() {
@@ -98,6 +113,8 @@ $('#concBaseInput').on('input', function() {
         $('#concTeoricaBaseDemo').text($(this).val());
     else
         $('#concTeoricaBaseDemo').text('Nb');
+
+    $('#resultado').hide();
 })
 
 $('#fatorCorrecaoBaseInput').on('input', function() {
@@ -105,4 +122,6 @@ $('#fatorCorrecaoBaseInput').on('input', function() {
         $('#concRealBaseDemo').text($(this).val());
     else
         $('#concRealBaseDemo').text('fb');
+
+    $('#resultado').hide();
 })

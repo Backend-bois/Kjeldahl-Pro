@@ -1,0 +1,37 @@
+@keyframes metodoSelectorLeftToRight {
+    0% {
+        right: 50%;
+        width: 50%;
+    }
+    30% {
+        right: 30%;
+        width: 70%;
+    }
+    70% {
+        right: 0%;
+        width: 70%;
+    }
+    100% {
+        right: 0%;
+        width: 50%;
+    }
+}
+
+@keyframes metodoSelectorRightToLeft {
+    0% {
+        left: 50%;
+        width: 50%;
+    }
+    30% {
+        left: 30%;
+        width: 70%;
+    }
+    70% {
+        left: 0%;
+        width: 70%;
+    }
+    100% {
+        left: 0%;
+        width: 50%;
+    }
+}

@@ -1,3 +1,5 @@
+@import url(animations.css);
+
 #demonstracao #dividendo {
     padding: 0 1em;
     border-bottom: 1px solid #000;
@@ -10,4 +12,33 @@
     border: 2px solid #052F5F;
     background: #fff;
     font-size: 2.5em;
+}
+
+#seletorMetodo {
+    position: relative;
+    border-bottom: 1px solid #00000070;
+}
+
+#seletorMetodo::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    border-bottom: 2px solid #052F5F;
+}
+
+#seletorMetodo.left::after {
+    left: 0;
+    animation: metodoSelectorRightToLeft 250ms;
+}
+
+#seletorMetodo.right::after {
+    right: 0;
+    animation: metodoSelectorLeftToRight 250ms;
+}
+
+#seletorMetodo .toggleMetodoBtn {
+    font-size: 1.2em;
+    padding: .5em 0;
 }

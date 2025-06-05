@@ -1,3 +1,5 @@
+let metodo = 1;
+
 function validaNumero(obj) {
     if (!(obj.val() != '' && parseFloat(obj.val()) > 0)) {
         obj.addClass('is-invalid');
@@ -125,3 +127,15 @@ $('#fatorCorrecaoBaseInput').on('input', function() {
 
     $('#resultado').hide();
 })
+
+$('#metodoDiretoBtn').on('click', function() {
+    metodo = 1;
+    $(this).parent().addClass('left');
+    $(this).parent().removeClass('right');
+});
+
+$('#metodoIndiretoBtn').on('click', function() {
+    metodo = 2;
+    $(this).parent().addClass('right');
+    $(this).parent().removeClass('left');
+});

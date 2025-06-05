@@ -9,32 +9,41 @@ function validaNumero(obj) {
     return false;
 }
 
-function calcular() {
-    let pesoAmostra = $('#pesoAmostraInput').val();
-    let volAcido = $('#acidoVolInput').val();
-    let concAcido = $('#acidoConcInput').val();
-    let fatorCorrecaoAcido = $('#fatorCorrecaoAcidoInput').val();
-    let volBase = $('#volBaseInput').val();
-    let concBase = $('#concBaseInput').val();
-    let fatorCorrecaoBase = $('#fatorCorrecaoBaseInput').val();
-    let fcn = $('#valorConversaoSelect').val();
+function validaDireto() {
+    let pesoAmostra = $('#pesoAmostraInputDir');
+    let volAcidoAmostra = $('#acidoVolAmostraInputDir');
+    let volAcidoBranco = $('#acidoVolBrancoInputDir');
+    let concAcido = $('#acidoConcInputDir');
+    let fatorCorrecaoAcido = $('#fatorCorrecaoAcidoInputDir');
+    let count = 0;
 
-    let result = (((volAcido * concAcido * fatorCorrecaoAcido) - (volBase * concBase * fatorCorrecaoBase))/pesoAmostra) * fcn * 1.4;
-    $('#resultado').text(result.toFixed(4));
-    $('#resultado').show();
-    $('#resultado')[0].scrollIntoView();
+    if (validaNumero(pesoAmostra))
+        count++;
+    if (validaNumero(volAcidoAmostra))
+        count++;
+    if (validaNumero(volAcidoBranco))
+        count++;
+    if (validaNumero(concAcido))
+        count++;
+    if (validaNumero(fatorCorrecaoAcido))
+        count++;
 
+    if (count == 0)
+        return true;
+
+    return false;
 }
 
-$('#calcularBtn').on('click', function() {
-    let pesoAmostra = $('#pesoAmostraInput');
-    let volAcido = $('#acidoVolInput');
-    let concAcido = $('#acidoConcInput');
-    let fatorCorrecaoAcido = $('#fatorCorrecaoAcidoInput');
-    let volBase = $('#volBaseInput');
-    let concBase = $('#concBaseInput');
-    let fatorCorrecaoBase = $('#fatorCorrecaoBaseInput');
+function validaIndireto() {
+    let pesoAmostra = $('#pesoAmostraInputInd');
+    let volAcido = $('#acidoVolInputInd');
+    let concAcido = $('#acidoConcInputInd');
+    let fatorCorrecaoAcido = $('#fatorCorrecaoAcidoInputInd');
+    let volBase = $('#volBaseInputInd');
+    let concBase = $('#concBaseInputInd');
+    let fatorCorrecaoBase = $('#fatorCorrecaoBaseInputInd');
     let count = 0;
+
     if (validaNumero(pesoAmostra))
         count++;
     if (validaNumero(volAcido))
@@ -51,79 +60,167 @@ $('#calcularBtn').on('click', function() {
         count++;
     
     if (count == 0) 
-        calcular();
+        return true;
+
+    return false;
         
-});
+}
+
+function calcular() {
+    if (metodo == 1 && validaDireto()) {
+        let pesoAmostra = $('#pesoAmostraInputDir').val();
+        let volAcidoAmostra = $('#acidoVolAmostraInputDir').val();
+        let volAcidoBranco = $('#acidoVolBrancoInputDir').val();
+        let concAcido = $('#acidoConcInputDir').val();
+        let fatorCorrecaoAcido = $('#fatorCorrecaoAcidoInputDir').val();
+        let fcn = $('#valorConversaoSelect').val();
+
+        let result = ((volAcidoAmostra - volAcidoBranco) * concAcido * fatorCorrecaoAcido * 1.4 * fcn)/pesoAmostra;
+
+        $('#resultado').text(result.toFixed(4));
+        $('#resultado').show();
+        $('#resultado')[0].scrollIntoView();
+
+    } else if (validaIndireto()) {
+        let pesoAmostra = $('#pesoAmostraInputInd').val();
+        let volAcido = $('#acidoVolInputInd').val();
+        let concAcido = $('#acidoConcInputInd').val();
+        let fatorCorrecaoAcido = $('#fatorCorrecaoAcidoInputInd').val();
+        let volBase = $('#volBaseInputInd').val();
+        let concBase = $('#concBaseInputInd').val();
+        let fatorCorrecaoBase = $('#fatorCorrecaoBaseInputInd').val();
+        let fcn = $('#valorConversaoSelect').val();
+    
+        let result = (((volAcido * concAcido * fatorCorrecaoAcido) - (volBase * concBase * fatorCorrecaoBase))/pesoAmostra) * fcn * 1.4;
+        $('#resultado').text(result.toFixed(4));
+        $('#resultado').show();
+        $('#resultado')[0].scrollIntoView();
+    }
+
+}
+
+
+$('#calcularBtn').on('click', calcular);
 
 $('input').on('focus', function() {
-    $(this).removeClass('is-invalid')
+    $(this).removeClass('is-invalid');
 });
 
 $('#valorConversaoSelect').on('change', function() {
-    $('#fatorConversaoDemo').text($(this).val().replace('.', ','));
+    $('.fatorConversaoDemo').text($(this).val().replace('.', ','));
+
+    $('#resultado').hide();
+});
+
+$('#pesoAmostraInputDir').on('input', function() {
+    if ($(this).val() != '') 
+        $('#pesoAmostraDemoDir').text($(this).val().replace('.', ',') + 'g');
+    else
+        $('#pesoAmostraDemoDir').text('P')
+
+    $('#resultado').hide();
+});
+
+$('#acidoVolAmostraInputDir').on('input', function() {
+    if ($(this).val() != '')
+        $('#acidoVolAmostraDemoDir').text($(this).val().replace('.', ',') + 'ml');
+    else
+        $('#acidoVolAmostraDemoDir').text('Va');
+
+    $('#resultado').hide();
+});
+
+$('#acidoVolBrancoInputDir').on('input', function() {
+    if ($(this).val() != '')
+        $('#AcidoVolBrancoDemoDir').text($(this).val().replace('.', ',') + 'ml');
+    else
+        $('#AcidoVolBrancoDemoDir').text('Vb');
+
+    $('#resultado').hide();
+});
+
+$('#acidoConcInputDir').on('input', function() {
+    if ($(this).val() != '')
+        $('#acidoConcDemoDir').text($(this).val().replace('.', ',') + 'N');
+    else
+        $('#acidoConcDemoDir').text('N');
+
+    $('#resultado').hide();
+});
+
+$('#fatorCorrecaoAcidoInputDir').on('input', function() {
+    if($(this).val() != '')
+        $('#fatorCorrecaoAcidoDemoDir').text($(this).val().replace('.', ','));
+    else
+        $('#fatorCorrecaoAcidoDemoDir').text('f');
+});
+
+
+
+
+
+
+
+
+$('#pesoAmostraInputInd').on('input', function() {
+    if ($(this).val() != '')
+        $('#pesoAmostraDemoInd').text($(this).val() + 'g');
+    else
+        $('#pesoAmostraDemoInd').text('P');
+
+    $('#resultado').hide();
+});
+
+$('#acidoVolInputInd').on('input', function() {
+    if ($(this).val() != '')
+        $('#acidoVolDemoInd').text($(this).val() + 'ml');
+    else
+        $('#acidoVolDemoInd').text('Va');
+
+    $('#resultado').hide();
+});
+
+$('#acidoConcInputInd').on('input', function() {
+    if ($(this).val() != '')
+        $('#acidoConcDemoInd').text($(this).val());
+    else
+        $('#acidoConcDemoInd').text('Na');
+
+    $('#resultado').hide();
+});
+
+$('#fatorCorrecaoAcidoInputInd').on('input', function() {
+    if ($(this).val() != '')
+        $('#fatorPadronizacaoDemoInd').text($(this).val());
+    else
+        $('#fatorPadronizacaoDemoInd').text('fa');
+
+    $('#resultado').hide();
+});
+
+$('#volBaseInputInd').on('input', function() {
+    if ($(this).val() != '')
+        $('#volBaseDemoInd').text($(this).val() + 'ml');
+    else
+        $('#volBaseDemoInd').text('Vb');
 
     $('#resultado').hide();
 })
 
-$('#pesoAmostraInput').on('input', function() {
+$('#concBaseInputInd').on('input', function() {
     if ($(this).val() != '')
-        $('#pesoAmostraDemo').text($(this).val() + 'g');
+        $('#concTeoricaBaseDemoInd').text($(this).val());
     else
-        $('#pesoAmostraDemo').text('P');
-
-    $('#resultado').hide();
-});
-
-$('#acidoVolInput').on('input', function() {
-    if ($(this).val() != '')
-        $('#acidoVolDemo').text($(this).val() + 'ml');
-    else
-        $('#acidoVolDemo').text('Va');
-
-    $('#resultado').hide();
-});
-
-$('#acidoConcInput').on('input', function() {
-    if ($(this).val() != '')
-        $('#acidoConcDemo').text($(this).val());
-    else
-        $('#acidoConcDemo').text('Na');
-
-    $('#resultado').hide();
-});
-
-$('#fatorCorrecaoAcidoInput').on('input', function() {
-    if ($(this).val() != '')
-        $('#fatorPadronizacaoDemo').text($(this).val());
-    else
-        $('#fatorPadronizacaoDemo').text('fa');
-
-    $('#resultado').hide();
-});
-
-$('#volBaseInput').on('input', function() {
-    if ($(this).val() != '')
-        $('#volBaseDemo').text($(this).val() + 'ml');
-    else
-        $('#volBaseDemo').text('Vb');
+        $('#concTeoricaBaseDemoInd').text('Nb');
 
     $('#resultado').hide();
 })
 
-$('#concBaseInput').on('input', function() {
+$('#fatorCorrecaoBaseInputInd').on('input', function() {
     if ($(this).val() != '')
-        $('#concTeoricaBaseDemo').text($(this).val());
+        $('#concRealBaseDemoInd').text($(this).val());
     else
-        $('#concTeoricaBaseDemo').text('Nb');
-
-    $('#resultado').hide();
-})
-
-$('#fatorCorrecaoBaseInput').on('input', function() {
-    if ($(this).val() != '')
-        $('#concRealBaseDemo').text($(this).val());
-    else
-        $('#concRealBaseDemo').text('fb');
+        $('#concRealBaseDemoInd').text('fb');
 
     $('#resultado').hide();
 })
@@ -132,10 +229,18 @@ $('#metodoDiretoBtn').on('click', function() {
     metodo = 1;
     $(this).parent().addClass('left');
     $(this).parent().removeClass('right');
+    $('#formDireto').show();
+    $('#formIndireto').hide();
+    $('#demonstracaoDir').removeClass('d-none');
+    $('#demonstracaoInd').addClass('d-none');
 });
 
 $('#metodoIndiretoBtn').on('click', function() {
     metodo = 2;
     $(this).parent().addClass('right');
     $(this).parent().removeClass('left');
+    $('#formDireto').hide();
+    $('#formIndireto').show();
+    $('#demonstracaoDir').addClass('d-none');
+    $('#demonstracaoInd').removeClass('d-none');
 });

@@ -1,6 +1,6 @@
 @import url(animations.css);
 
-#demonstracao #dividendo {
+.demonstracao .dividendo {
     padding: 0 1em;
     border-bottom: 1px solid #000;
 }
@@ -10,6 +10,7 @@
     padding: .3em .5em;
     margin-bottom: 2em;
     border: 2px solid #052F5F;
+    border-radius: 3px;
     background: #fff;
     font-size: 2.5em;
 }
@@ -39,6 +40,6 @@
 }
 
 #seletorMetodo .toggleMetodoBtn {
-    font-size: 1.2em;
+    font-size: 1.1em;
     padding: .5em 0;
 }

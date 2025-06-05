@@ -77,7 +77,7 @@ function calcular() {
 
         let result = ((volAcidoAmostra - volAcidoBranco) * concAcido * fatorCorrecaoAcido * 1.4 * fcn)/pesoAmostra;
 
-        $('#resultado').text(result.toFixed(4));
+        $('#resultado').text(result.toFixed(4) + '%');
         $('#resultado').show();
         $('#resultado')[0].scrollIntoView();
 
@@ -92,7 +92,7 @@ function calcular() {
         let fcn = $('#valorConversaoSelect').val();
     
         let result = (((volAcido * concAcido * fatorCorrecaoAcido) - (volBase * concBase * fatorCorrecaoBase))/pesoAmostra) * fcn * 1.4;
-        $('#resultado').text(result.toFixed(4));
+        $('#resultado').text(result.toFixed(4) + '%');
         $('#resultado').show();
         $('#resultado')[0].scrollIntoView();
     }
